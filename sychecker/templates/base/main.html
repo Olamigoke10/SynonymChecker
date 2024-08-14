@@ -1,0 +1,16 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Find Synonyms</button>
+</form>
+
+{% if synonyms %}
+    <h2>Synonyms:</h2>
+    <ul>
+        {% for synonym in synonyms %}
+            <li>{{ synonym }}</li>
+        {% endfor %}
+    </ul>
+{% elif synonyms == None %}
+    <p>No synonyms found</p>
+{% endif %}
